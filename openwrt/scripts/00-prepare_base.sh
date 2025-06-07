@@ -350,7 +350,8 @@ sed -i '\#export ENV=/etc/shinit#a export HISTCONTROL=ignoredups' package/base-f
 mkdir -p files/root
 curl -so files/root/.bash_profile $mirror/openwrt/files/root/.bash_profile
 curl -so files/root/.bashrc $mirror/openwrt/files/root/.bashrc
-
+# defaultl password
+sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/g' package/base-files/files/etc/shadow
 # rootfs files
 mkdir -p files/etc/sysctl.d
 curl -so files/etc/sysctl.d/10-default.conf $mirror/openwrt/files/etc/sysctl.d/10-default.conf
